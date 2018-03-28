@@ -12,12 +12,12 @@
     </script>
     </head>
     <body>
-
+        <input type="text" id="address" value="">
         <input type="text" id="balanceView" value="0">
         <input type="button" id="getBalance" value="Balance Request" onClick="getBalance()">
         <script>
             function getBalance() {
-        document.getElementById("balanceView").value=(web3.fromWei(web3.eth.getBalance("0x260C29d0C228603b35B608Cfa68F1476a1C763Ca")));
+        document.getElementById("balanceView").value=(web3.fromWei(web3.eth.getBalance(document.getElementById("address").value)));
             }
         </script>
     </body>
