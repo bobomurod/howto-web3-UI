@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <script src="./web3.js"></script>
+        <script>    
+            // если уже есть определение провайдера web3 - то юзаем его
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            //если нет - подключаем свой провайдер
+            web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/B0QFpfZKeuLFhhW3zZeu"));
+        }
+    </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
