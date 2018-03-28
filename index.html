@@ -28,7 +28,7 @@
             }
 
             function getBlockInfo() {
-                document.getElementById("blockinfo").value=(web3.eth.getBlock(web3.eth.blockNumber));
+                document.getElementById("blockinfo").value=(JSON.stringify((web3.eth.getBlock(web3.eth.blockNumber))));
             }
         </script>
     </body>
