@@ -9,30 +9,9 @@
             //если нет - подключаем свой провайдер
             web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/B0QFpfZKeuLFhhW3zZeu"));
         }
-    </script>
-    </head>
-    <body>
-        <input type="text" id="address" value="">
-        <input type="text" id="balanceView" value="0">
-        <input type="button" id="getBalance" value="Balance Request" onClick="getBalance()">
-        <input type="button" id="getBlockInfoButton" value="Latest block information" onClick="getBlockInfo()">
-
-        <p>
-            <textarea id="blockinfo" rows="10" cols="45"></textarea>
-        </p>
-
-
-        <script>
-            function getBalance() {
-        document.getElementById("balanceView").value=(web3.fromWei(web3.eth.getBalance(document.getElementById("address").value)));
-            }
-
-            function getBlockInfo() {
-                document.getElementById("blockinfo").value=(JSON.stringify((web3.eth.getBlock(web3.eth.blockNumber))));
-            }
-            function getContractInfo() {
-                var contractStorage= web3.eth.contract([
-	{
+        
+                var contractAbi = [
+	{ 
 		"constant": false,
 		"inputs": [
 			{
@@ -60,9 +39,39 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]);
-                var contractAddress= web3.eth.contractStorage.at('0x90357874ef739c31740cc812bc9be07c7bc4a52b');
-                document.getElementById("balanceView").value=
+];              
+                // web3.eth.defaultAccount = '0x260C29d0C228603b35B608Cfa68F1476a1C763Ca';
+                var contractStorage = web3.eth.contract(contractAbi);
+                var contractAddress = contractStorage.at('0x90357874ef739c31740cc812bc9be07c7bc4a52b');
+                
+            
+
+    </script>
+    </head>
+    <body>
+        <input type="text" id="address" value="">
+        <input type="text" id="balanceView" value="0">
+        <input type="button" id="getBalance" value="Balance Request" onClick="getBalance()">
+        <input type="button" id="getBlockInfoButton" value="Latest block information" onClick="getBlockInfo()">
+        <input type="button" id="getStorageContract" value="Get stored value" onClick="storageContractGet()">
+        <input type="button" id="initContract" value="initContract" onClick="getContractInfo()">
+
+        <p>
+            <textarea id="blockinfo" rows="10" cols="45"></textarea>
+        </p>
+
+
+        <script>
+            function getBalance() {
+        document.getElementById("balanceView").value=(web3.fromWei(web3.eth.getBalance(document.getElementById("address").value)));
+            }
+
+            function getBlockInfo() {
+                document.getElementById("blockinfo").value=(JSON.stringify((web3.eth.getBlock(web3.eth.blockNumber))));
+            }
+            
+            function storageContractGet(){
+                document.getElementById("balanceView").value = contractAddress.get.call();
             }
         </script>
     </body>
