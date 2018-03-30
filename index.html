@@ -10,39 +10,39 @@
             web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/B0QFpfZKeuLFhhW3zZeu"));
         }
         
-                var contractAbi = [
-	{ 
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_number",
-				"type": "uint256"
-			}
-		],
-		"name": "set",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "get",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	}
-];              
-                // web3.eth.defaultAccount = '0x260C29d0C228603b35B608Cfa68F1476a1C763Ca';
-                var contractStorage = web3.eth.contract(contractAbi);
-                var contractAddress = contractStorage.at('0x90357874ef739c31740cc812bc9be07c7bc4a52b');
+        var contractAbi = [
+            { 
+                "constant": false,
+                "inputs": [
+                    {
+                        "name": "_number",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "set",
+                "outputs": [],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [],
+                "name": "get",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            }
+        ];              
+        // web3.eth.defaultAccount = '0x260C29d0C228603b35B608Cfa68F1476a1C763Ca';
+        var contractStorage = web3.eth.contract(contractAbi);
+        var contractAddress = contractStorage.at('0x90357874ef739c31740cc812bc9be07c7bc4a52b');
                 
             
 
