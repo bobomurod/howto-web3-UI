@@ -60,7 +60,7 @@
         contractEvent.watch(function(error,result){
             if (!error)
                 {
-                    document.getElementById("eventView").value = result.args.number;
+                    document.getElementById("eventView").value = result.args;
                 } else {
                     console.log(error);
                 }
