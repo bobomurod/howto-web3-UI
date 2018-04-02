@@ -55,10 +55,17 @@
 
         // web3.eth.defaultAccount = '0x260C29d0C228603b35B608Cfa68F1476a1C763Ca';
         var contractStorage = web3.eth.contract(contractAbi);
-        var contractAddress = contractStorage.at('0x90357874ef739c31740cc812bc9be07c7bc4a52b');
-               
+        var contractAddress = contractStorage.at('0x2309206CC02A25B2749C918CCa1B0258A9bB4CEF');
+        var contractEvent = contractAddress.Numbers();
+        contractEvent.watch(function(error,result){
+            if (!error)
+                {
+                    document.getElementById("eventView").value = result.args.number;
+                } else {
+                    console.log(error);
+                }
+        })
     
-        
     </script>
     </head>
     <body>
