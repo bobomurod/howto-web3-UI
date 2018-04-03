@@ -57,6 +57,14 @@
         var contractStorage = web3.eth.contract(contractAbi);
         var contractAddress = contractStorage.at('0x2309206CC02A25B2749C918CCa1B0258A9bB4CEF');
         var contractEvent = contractAddress.Numbers();
+        contractEvent.watch(function(error,result){
+            if (!error)
+                {
+                    document.getElementById("eventView").value = JSON.stringify(result.args);
+                } else {
+                    console.log(error);
+                }
+        });
         
     
     </script>
@@ -88,16 +96,9 @@
             function storageContractGet(){
                 document.getElementById("balanceView").value = contractAddress.get.call();
             }
-            function getEvent(){
-                contractEvent.watch(function(error,result){
-            if (!error)
-                {
-                    document.getElementById("eventView").value = JSON.stringify(result.args);
-                } else {
-                    console.log(error);
-                }
-        });
-            }
+            // function getEvent(){
+                
+            // }
         </script>
     </body>
 </html>
